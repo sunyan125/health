@@ -1,0 +1,22 @@
+
+{% extends "base.html" %}
+
+{% block title %} Product - View {% endblock %}
+
+{% block heading %} <h1> Product</h1><h2>View</h2>  {% endblock %}
+{% block content %} 
+<table>
+  <tr>
+      <th align="left">title : {{ product_instance.title }}</th>
+  </tr>
+  <tr>
+      <th align="left">description: {{ product_instance.description }}</th>
+  </tr>
+  <tr>
+      <th align="left">url: {{ product_instance.image_url  }}</th>
+  </tr>
+  <tr> 
+      <th align="left">price: {{ product_instance.price }}</th>
+  </tr>
+</table>
+{% endblock %}
