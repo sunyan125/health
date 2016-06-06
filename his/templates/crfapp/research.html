@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>研究进度--麻醉科研管理系统</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap-editable.css">
+
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="container">
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">你好，穆东亮</a>
+			</div>
+	
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button></li>
+					<li><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></button></li>
+					<li><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></button></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div>
+	</nav>
+
+	<!-- main -->
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1"><strong>研究名称:</strong></span>
+				<input type="text" class="form-control" placeholder="研究名称" aria-describedby="basic-addon1">
+			</div>
+
+			<!-- Split button -->
+			<div class="btn-group">
+				<button type="button" class="btn btn-danger">Action</button>
+				<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<span class="caret"></span>
+				<span class="sr-only">Toggle Dropdown</span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">Action</a></li>
+					<li><a href="#">Another action</a></li>
+					<li><a href="#">Something else here</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#">Separated link</a></li>
+				</ul>
+			</div>
+
+<a href="#" id="username" data-type="text" data-pk="1" data-url="/post" data-title="Enter username">superuser</a>
+
+
+
+    <a href="#" id="comments" data-type="textarea" data-pk="1">awesome comment!</a>
+
+
+
+		</div>
+	</div>
+	<!-- main -->
+
+	<footer class="site-footer">
+		Copyright &copy 2016 
+	</footer>
+</div>
+
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="/static/js/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/bootstrap-editable.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+    //turn to inline mode
+    $.fn.editable.defaults.mode = 'inline';
+
+/*	$('#username').editable({
+		type: 'text',
+        title: 'Enter username',
+        success: function(response, newValue) {
+            userModel.set('username', newValue); //update backbone model
+        }
+    });*/
+
+    //editables 
+    $('#username').editable({
+           url: '/crf/post',
+           type: 'text',
+           pk: 1,
+           name: 'username',
+           title: 'Enter username'
+    });
+    /*$('#username').editable();*/
+	</script>
+
+    <script>
+    $(function(){
+        $('#comments').editable({
+            url: '/crf/research/P1/',
+            title: 'Enter comments',
+            rows: 10
+        });
+    });
+    </script>
+</body>
+</html>
