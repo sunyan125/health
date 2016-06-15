@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^cart/view/$', view_cart, name ='cartView'),
     url(r'^cart/add/(?P<id>[^/]+)/$', add_to_cart, name = 'addItem'),
     url(r'^cart/clean/', clean_cart, name = 'cleanItem'),
+    url(r'^$', view_index),
 ]
