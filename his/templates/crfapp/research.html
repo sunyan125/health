@@ -7,84 +7,249 @@
 	<title>研究进度--麻醉科研管理系统</title>
 	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap-editable.css">
-
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-select.min.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
 </head>
 <body>
 
-<div class="container">
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">你好，穆东亮</a>
-			</div>
-	
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button></li>
-					<li><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></button></li>
-					<li><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></button></li>
-				</ul>
-			</div><!-- /.navbar-collapse -->
-		</div>
-	</nav>
+    <div class="container">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">你好，穆东亮</a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <button type="button" class="btn btn-default">
+                  <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="btn btn-default">
+                  <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="btn btn-default">
+                  <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                </button>
+              </li>
+            </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+        </div>
+      </nav>
+      <!-- main -->
+      <div class="panel panel-default">
+        <div class="panel-body">
+          研究名称：<a href="#" id="topicname" data-type="text" data-pk="1" data-url="/post" data-title="请输入研究名称">右美托咪定对非心脏手术患者术后谵妄发发生率的影响</a>
+        </div>
+      </div>
 
-	<!-- main -->
-	<div class="panel panel-default">
-		<div class="panel-body">
-			<div class="input-group">
-				<span class="input-group-addon" id="basic-addon1"><strong>研究名称:</strong></span>
-				<input type="text" class="form-control" placeholder="研究名称" aria-describedby="basic-addon1">
-			</div>
-
-			<!-- Split button -->
-			<div class="btn-group">
-				<button type="button" class="btn btn-danger">Action</button>
-				<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<span class="caret"></span>
-				<span class="sr-only">Toggle Dropdown</span>
-				</button>
-				<ul class="dropdown-menu">
-					<li><a href="#">Action</a></li>
-					<li><a href="#">Another action</a></li>
-					<li><a href="#">Something else here</a></li>
-					<li role="separator" class="divider"></li>
-					<li><a href="#">Separated link</a></li>
-				</ul>
-			</div>
-
-<a href="#" id="username" data-type="text" data-pk="1" data-url="/post" data-title="Enter username">superuser</a>
-
-
-
-    <a href="#" id="comments" data-type="textarea" data-pk="1">awesome comment!</a>
-
-
-
-		</div>
-	</div>
-	<!-- main -->
-
-	<footer class="site-footer">
-		Copyright &copy 2016 
-	</footer>
-</div>
-
-
+      <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-10">
+                    <select id="case-filter" class="selectpicker" multiple data-hide-disabled="true" data-max-options="1" data-size="5">
+                        <option selected="selected">全部病例</option>
+                        <option>排除病例</option>
+                        <option>有效病例</option>
+                        <option>方案偏离</option>
+                        <option>退出病例</option>
+                        <option>无效病例</option>
+                        <option>未定义</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <a class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新增</a>
+                    <a class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> 检索</a>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>序号</th>
+                <th><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> 患者编号</th>
+                <th><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> 科室</th>
+                <th><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> 病例号</th>
+                <th>姓名</th>
+                <th><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> 术后</th>
+                <th>首页</th>
+                <th>导航/入排</th>
+                <th>术前信息</th>
+                <th>术中信息</th>
+                <th>术后信息</th>
+                <th>SAE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>03-278</td>
+                <td>骨1-5床</td>
+                <td>2129848</td>
+                <td></td>
+                <td class='text-right'>天</td>
+                <td class="topic-success">排除病例</td>
+                <td class="topic-success"></td>
+                <td class="topic-warnning"></td>
+                <td></td>
+                <td></td>
+                <td class='text-center'>0</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>03-279</td>
+                <td>骨1-17床</td>
+                <td>2317115</td>
+                <td>宫荣前</td>
+                <td class='text-right'>139天</td>
+                <td class="topic-success">有效病例</td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class='text-center'>0</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>03-280</td>
+                <td>骨1-33床</td>
+                <td>2316888</td>
+                <td>玄兆忠</td>
+                <td class='text-right'>139天</td>
+                <td class="topic-success">有效病例</td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class='text-center'>0</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>03-281</td>
+                <td>胸科-17床</td>
+                <td>2317656</td>
+                <td>贾慧敏</td>
+                <td class='text-right'>135天</td>
+                <td class="topic-success">方案偏离</td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class='text-center'>0</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td></td>
+                <td>泌1-41床</td>
+                <td>2318009</td>
+                <td></td>
+                <td class='text-right'>天</td>
+                <td class="topic-success">排除病例</td>
+                <td class="topic-success"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class='text-center'>0</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>02-141</td>
+                <td>泌1-15床</td>
+                <td>2318010</td>
+                <td>冯明月</td>
+                <td class='text-right'>132天</td>
+                <td class="topic-success">有效病例</td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class='text-center'>0</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>02-142</td>
+                <td>外3-6床</td>
+                <td>2317751</td>
+                <td>刘惠琴</td>
+                <td class='text-right'>131天</td>
+                <td class="topic-success">有效病例</td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class='text-center'>0</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>02-143</td>
+                <td>外2-26床</td>
+                <td>2317474</td>
+                <td>王绍华</td>
+                <td class='text-right'>131天</td>
+                <td class="topic-success">有效病例</td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class='text-center'>0</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>01-03</td>
+                <td>外3-36床</td>
+                <td>2317851</td>
+                <td>LBR</td>
+                <td class='text-right'>128天</td>
+                <td class="topic-success">有效病例</td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class="topic-success"></td>
+                <td class='text-center'>0</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td></td>
+                <td>外-37床</td>
+                <td>2317776</td>
+                <td>赵浦</td>
+                <td class='text-right'>113天</td>
+                <td class="topic-success">排除病例</td>
+                <td class="topic-success"></td>
+                <td class="topic-warnning"></td>
+                <td></td>
+                <td></td>
+                <td class='text-center'>0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- main -->
+      <footer class="site-footer">Copyright © 2016</footer>
+    </div>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="/static/js/jquery.min.js"></script>
+	<script src="/static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="/static/js/bootstrap.min.js"></script>
-	<script src="/static/js/bootstrap-editable.min.js"></script>
+	<script src="/static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/bootstrap-editable.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/js/bootstrap-select.min.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
     //turn to inline mode
     $.fn.editable.defaults.mode = 'inline';

@@ -95,3 +95,8 @@ def add_to_cart(request,id):
 def clean_cart(request):
     request.session['cart'] = Cart()
     return view_cart(request)
+
+def view_index(request):
+    t=get_template('depotapp/index.html')
+    c=RequestContext(request,locals())
+    return HttpResponse(t.render(c))
