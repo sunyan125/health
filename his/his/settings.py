@@ -37,8 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'registration',
     'depotapp',
+    'crfapp',
 ]
+
+SITE_ID = 1
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
@@ -113,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
