@@ -28,7 +28,6 @@ def list_product(request):
     list_items = Product.objects.all()
     paginator = Paginator(list_items ,10)
 
-
     try:
         page = int(request.GET.get('page', '1'))
     except ValueError:

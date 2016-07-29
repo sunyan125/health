@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^research/$', research_list),
     url(r'^research/(?P<id>[^/]+)/$', view_research, name ='viewPro'),
     url(r'^post$', view_post, name ='viewPro'),
+    url(r'^register/$', register, name='register'),
 ]
