@@ -6,12 +6,15 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template.loader import get_template
 from django.core.paginator import Paginator
 from django.core.urlresolvers import reverse
+from django.template.defaultfilters import default
+from django.contrib.auth import authenticate
+from django.contrib.auth.decorators import login_required
 import datetime
+
 
 from models import *
 from forms import *
-from django.template.defaultfilters import default
-from django.contrib.auth import authenticate
+
 
 def register(request):
     registered = False;
@@ -38,12 +41,12 @@ def register(request):
     return render(request, 
                   'registration/registration_form.html', 
                    {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+
           
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print username, password
         user = authenticate(username = username, password = password)
         
         if user:
@@ -58,11 +61,16 @@ def user_login(request):
     else:
         return render(request, 'registration/login.html',{})
 
+
+
+@login_required
 def research_list(request):
     t=get_template('crfapp/research_list.html')
     c=RequestContext(request,locals())
     return HttpResponse(t.render(c))
 
+
+@login_required
 def view_research(request, id):
     # product_instance = Product.objects.get(id=id)
 
@@ -71,6 +79,8 @@ def view_research(request, id):
     #c=RequestContext(request,{'posts':posts})
     return HttpResponse(t.render(c))
 
+
+@login_required
 def view_post(request, id):
     # product_instance = Product.objects.get(id=id)
 
