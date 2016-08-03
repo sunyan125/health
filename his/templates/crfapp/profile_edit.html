@@ -13,18 +13,24 @@
     <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.6/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet"/>
     <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.6/bootstrap-editable/js/bootstrap-editable.min.js"></script>
 	
+	<script src="/static/js/rbeditable.js"></script>
+	
 	<script>
 		$(document).ready(function(){
     		//toggle `popup` / `inline` mode
-    	$.fn.editable.defaults.mode = 'popup';  
-		$('#username').editable();
-		$('#email').editable();
-		$('#role').editable();
-		$('#gender').editable();
-		$('#depart').editable();
-		$('#cell').editable();
-		
-});
+    		$.fn.editable.defaults.mode = 'popup';  
+			$('#username').editable();
+			$('#email').editable();
+			$('#role').editable(
+					{source: [	
+					          	{value: 1, text: 'admin'},
+		                        {value: 2, text: 'researcher'},
+		                        {value: 3, text: 'observer'}
+		            ]});
+			$('#gender').editable();
+			$('#depart').editable();
+			$('#cell').editable();
+		});
 	</script>
 </head>
 
@@ -49,9 +55,9 @@
    		
    		<div>
    			<span>角色</span>
-   			<a href="#" id="role" data-type="text" data-pk="{{request.user.userprofile.id}}" data-title="Enter user role" 
-   			   data-url="{% url 'updateuser' request.user.userprofile.id %}" data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}">
-   			   {{ request.user.userprofile.role }}
+   			<a href="#" id="role" data-type="select" data-pk="{{request.user.userprofile.id}}" data-title="Enter user role" 
+   			   data-url="{% url 'updateuser' request.user.userprofile.id %}" data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}"
+   			   data-value = "{{ request.user.userprofile.role }}" >
    			</a>
 		</div>
 		

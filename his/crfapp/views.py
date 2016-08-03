@@ -21,6 +21,7 @@ def update_user(request,id):
         else:
             UserProfile.objects.filter(id=id).update(**{cname:val})
         return render(request, 'crfapp/profile_edit.html',{})
+    
 
 @login_required
 def profile_edit(request):
