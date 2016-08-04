@@ -1,0 +1,59 @@
+<head>
+	<meta charset="utf-8">
+    <title>X-editable starter template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- bootstrap -->
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script> 
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>  
+    
+    <script>
+        $(document).ready(function(){
+            $.ajaxSetup({
+                 data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+            });
+        	$('#formadd').submit(function(){
+                var id_prj = $("#prjId").val();                 
+                var id_m = $("#mId").val();    
+                var id_p = $("#pId").val();    
+                var id_sn = $("#pSN").val();    
+                var id_depart = $("#pDepart").val();    
+               
+                $.ajax({
+                    type:"POST",
+                    data: {id_prj:id_prj, id_m:id_m, id_p:id_p, id_sn:id_sn, id_depart:id_depart},
+                    url: "{% url 'createcrfdetail' %}", //后台处理函数的url 这里用的是static url 需要与urls.py中的name一致
+                    cache: false,
+                    dataType: "html",
+                    success: function(result, statues, xml){
+                        alert(result);                                         //成功时弹出view传回来的结果
+                    },
+                    error: function(){
+                        alert("false");
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+    
+
+</head>
+
+{% block body_block %}
+<h1>Create CRF</h1>
+
+<form method="post" id="formadd">
+    {% csrf_token %}
+	<p> Project Id: <input id="prjId" maxlength="50" name="prjIdName" type="text" /></p>
+	<p> Medical History Id: <input id="mId" maxlength="50" name="mIdName" type="text" /></p>
+	<p> Patient Id: <input id="pId" maxlength="50" name="pIdName" type="text" /></p>
+	<p> Patient SName: <input id="pSN" maxlength="50" name="pSNName" type="text" /></p>
+	<p> Depart: <input id="pDepart" maxlength="50" name="pDepartName" type="text" /></p>
+
+	<button type="submit" id ="submit">Create CRF</button>
+</form>
+
+
+{% endblock %}

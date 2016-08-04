@@ -1,0 +1,95 @@
+<head>
+	<meta charset="utf-8">
+    <title>X-editable starter template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- bootstrap -->
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script> 
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>  
+    
+
+    <!-- x-editable (bootstrap version) -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.6/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.6/bootstrap-editable/js/bootstrap-editable.min.js"></script>
+	
+	<script src="/static/js/rbeditable.js"></script>
+	
+	<script>
+		$(document).ready(function(){
+    		//toggle `popup` / `inline` mode
+    		$.fn.editable.defaults.mode = 'popup';  
+			$('#username').editable();
+			$('#email').editable();
+			$('#role').editable(
+					{source: [	
+					          	{value: 1, text: 'admin'},
+		                        {value: 2, text: 'researcher'},
+		                        {value: 3, text: 'observer'}
+		            ]});
+			$('#gender').editable();
+			$('#depart').editable();
+			$('#cell').editable();
+		});
+	</script>
+</head>
+
+{% block body_block %}
+<div class="container">
+<h1>User Profile</h1>
+		<div>
+			<span>用户名</span>
+			<a href="#" id="username" data-type="text" data-pk="{{request.user.id}}" data-title="Enter user name" 
+			   data-url="{% url 'updateuser' request.user.id %}" data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}">
+			   {{ request.user.username }}
+			</a>
+        </div>
+        
+        <div>
+        	<span>邮箱</span>
+			<a href="#" id="email" data-type="text" data-pk="{{request.user.id}}" data-title="Enter email address" 
+			   data-url="{% url 'updateuser' request.user.id %}" data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}">
+			   {{ request.user.email }}
+			</a>
+   		</div>
+   		
+   		<div>
+   			<span>角色</span>
+   			<a href="#" id="role" data-type="select" data-pk="{{request.user.userprofile.id}}" data-title="Enter user role" 
+   			   data-url="{% url 'updateuser' request.user.userprofile.id %}" data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}"
+   			   data-value = "{{ request.user.userprofile.role }}" >
+   			</a>
+		</div>
+		
+		<div>
+			<span>性别</span>
+   			<a href="#" id="gender" data-type="text" data-pk="{{request.user.userprofile.id}}" data-title="Enter user gender"
+			   data-url="{% url 'updateuser' request.user.userprofile.id %}" data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}">
+			   {{ request.user.userprofile.gender }}
+			</a>
+		</div>
+		
+		<div>
+			<span>部门</span>
+   			<a href="#" id="depart" data-type="text" data-pk="{{request.user.userprofile.id}}" data-title="Enter user depart" 
+   			   data-url="{% url 'updateuser' request.user.userprofile.id %}" data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}">
+   			   {{ request.user.userprofile.depart }}
+   			</a>
+		</div>
+		
+		<div><span>电话</span>
+   			<a href="#" id="cell" data-type="text" data-pk="{{request.user.userprofile.id}}" data-title="Enter user cell" 
+   			   data-url="{% url 'updateuser' request.user.userprofile.id %}" data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}">
+   			   {{ request.user.userprofile.cell }}
+   			</a>
+		</div>
+		
+		<div><span>最后登录时间</span>
+   			<a data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}">
+   			   {{ request.user.last_login }}
+   			</a>
+		</div>
+		
+		
+</div>
+{% endblock %}
