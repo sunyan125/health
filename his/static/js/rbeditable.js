@@ -1,3 +1,25 @@
+/**
+List of radio buttons. Unlike checklist, value is stored internally as
+scalar variable instead of array. Extends Checklist to reuse some code.
+
+@class radiolist
+@extends checklist
+@final
+@example
+<a href="#" id="options" data-type="radiolist" data-pk="1" data-url="/post" data-title="Select options"></a>
+<script>
+$(function(){
+    $('#options').editable({
+        value: 2,    
+        source: [
+              {value: 1, text: 'option1'},
+              {value: 2, text: 'option2'},
+              {value: 3, text: 'option3'}
+           ]
+    });
+});
+</script>
+**/
 (function($) {
 	    var Radiolist = function(options) {
 	        this.init('radiolist', options, Radiolist.defaults);

@@ -24,6 +24,23 @@
 			$('#age').editable();
 			$('#height').editable();
 			$('#weight').editable();
+			$('#marriage').editable(
+								{source: [	
+			  					          	{value: 1, text: 'single'},
+					                        {value: 2, text: 'married'},
+					                        {value: 3, text: 'divorced'},
+					                        {value: 4, text: 'widowed'}
+					            ]});
+			$('#edu').editable(
+					{source: [	
+  					          	{value: 1, text: 'high school'},
+		                        {value: 2, text: 'bachelor'},
+		                        {value: 3, text: 'graduate'}
+		            ]});
+			$('#loc').editable();
+			$('#cell1').editable();
+			$('#cell2').editable();
+			$('#idcard').editable();
 		});
 	</script>
 </head>
@@ -77,14 +94,53 @@
 			</a>
         </div>
         
+        <div>
+   			<span>婚姻状况</span>
+   			<a href="#" id="marriage" data-type="radiolist" data-pk="{{patient.id}}" data-title="Select marriage status" 
+   			   data-url="{% url 'updatepatient' patient.id %}" data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}"
+   			   data-value = "{{ patient.p_marriage }}" >
+   			</a>
+		</div>
+        
          <div>
-			<span>体重</span>
-			<a href="#" id="weight" data-type="text" data-pk="{{patient.id}}" data-title="Enter weight" 
+   			<span>教育程度</span>
+   			<a href="#" id="edu" data-type="radiolist" data-pk="{{patient.id}}" data-title="Select edu status" 
+   			   data-url="{% url 'updatepatient' patient.id %}" data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}"
+   			   data-value = "{{ patient.p_edu }}" >
+   			</a>
+		</div>
+		
+		    <div>
+			<span>住址</span>
+			<a href="#" id="loc" data-type="text" data-pk="{{patient.id}}" data-title="Enter loc" 
 			   data-url="{% url 'updatepatient' patient.id %}" data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}">
-			   {{ patient.p_height }}
+			   {{ patient.p_loc }}
 			</a>
         </div>
         
+        <div>
+			<span>联系电话1</span>
+			<a href="#" id="cell1" data-type="text" data-pk="{{patient.id}}" data-title="Enter cell1" 
+			   data-url="{% url 'updatepatient' patient.id %}" data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}">
+			   {{ patient.p_cell1 }}
+			</a>
+        </div>
+		
+		<div>
+			<span>联系电话2</span>
+			<a href="#" id="cell2" data-type="text" data-pk="{{patient.id}}" data-title="Enter cell2" 
+			   data-url="{% url 'updatepatient' patient.id %}" data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}">
+			   {{ patient.p_cell2 }}
+			</a>
+        </div>
+        
+        <div>
+			<span>身份证</span>
+			<a href="#" id="idcard" data-type="text" data-pk="{{patient.id}}" data-title="Enter weight" 
+			   data-url="{% url 'updatepatient' patient.id %}" data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}">
+			   {{ patient.p_idcard }}
+			</a>
+        </div>
 		
 </div>
 {% endblock %}

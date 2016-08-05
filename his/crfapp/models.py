@@ -7,7 +7,7 @@ from datetime import datetime
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     role = models.CharField(max_length=30)
+    role = models.CharField(max_length=30)
     gender = models.CharField(max_length=30, blank=True)
     depart = models.CharField(max_length=200, blank = True)
     cell = models.CharField(max_length=100, blank = True)
